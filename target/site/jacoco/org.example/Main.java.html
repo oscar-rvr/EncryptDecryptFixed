@@ -6,22 +6,22 @@
 
 <span class="fc" id="L7">        Config config = Config.parseArgs(args);</span>
 
-<span class="pc bpc" id="L9" title="1 of 4 branches missed.">        if (config.getData().isEmpty() &amp;&amp; config.getInFile() == null) {</span>
+<span class="fc bfc" id="L9" title="All 4 branches covered.">        if (config.getData().isEmpty() &amp;&amp; config.getInFile() == null) {</span>
 <span class="fc" id="L10">            System.out.println(&quot;Error: No input data provided or invalid file&quot;);</span>
 <span class="fc" id="L11">            return;</span>
         }
 
         String data;
-<span class="pc bpc" id="L15" title="1 of 2 branches missed.">        if (config.getData().isEmpty()) {</span>
-<span class="nc" id="L16">            data = FileManager.readFile(config.getInFile());</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        if (config.getData().isEmpty()) {</span>
+<span class="fc" id="L16">            data = FileManager.readFile(config.getInFile());</span>
         } else {
 <span class="fc" id="L18">            data = config.getData();</span>
         }
 
 
-<span class="pc bpc" id="L22" title="1 of 2 branches missed.">        if (data == null) {</span>
-<span class="nc" id="L23">            System.out.println(&quot;Error: Unable to read input file&quot;);</span>
-<span class="nc" id="L24">            return;</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (data == null) {</span>
+<span class="fc" id="L23">            System.out.println(&quot;Error: Unable to read input file&quot;);</span>
+<span class="fc" id="L24">            return;</span>
         }
 
 <span class="fc" id="L27">        String result = TextProcessor.process(data, config);</span>

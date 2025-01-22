@@ -11,11 +11,11 @@
     public static Config parseArgs(String[] args) {
 <span class="fc" id="L12">        Config config = new Config();</span>
 <span class="fc bfc" id="L13" title="All 2 branches covered.">        for (int i = 0; i &lt; args.length; i++) {</span>
-<span class="pc bpc" id="L14" title="2 of 7 branches missed.">            switch (args[i]) {</span>
+<span class="pc bpc" id="L14" title="1 of 7 branches missed.">            switch (args[i]) {</span>
 <span class="fc" id="L15">                case &quot;-mode&quot; -&gt; config.mode = args[i + 1];</span>
 <span class="fc" id="L16">                case &quot;-key&quot; -&gt; config.key = Integer.parseInt(args[i + 1]);</span>
 <span class="fc" id="L17">                case &quot;-data&quot; -&gt; config.data = args[i + 1];</span>
-<span class="nc" id="L18">                case &quot;-in&quot; -&gt; config.inFile = args[i + 1];</span>
+<span class="fc" id="L18">                case &quot;-in&quot; -&gt; config.inFile = args[i + 1];</span>
 <span class="nc" id="L19">                case &quot;-out&quot; -&gt; config.outFile = args[i + 1];</span>
 <span class="fc" id="L20">                case &quot;-alg&quot; -&gt; config.alg = args[i + 1];</span>
             }

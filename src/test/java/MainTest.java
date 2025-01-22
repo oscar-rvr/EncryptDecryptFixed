@@ -2,6 +2,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 import com.github.stefanbirkner.systemlambda.SystemLambda;
 import org.example.Config;
+import org.example.FileManager;
 
 import org.example.Main;
 
@@ -71,6 +72,35 @@ void givenValidArgs_whenMainExecutedUnicode_thenCorrectOutputAndConfigValues() t
 
 
 
+    }
+    @Test
+    void givenNoInputFile_whenRun_thenPrintErrorMessage() throws Exception {
+        String[] args = {"-mode", "enc", "-data", "test","-in","file1.txt"};
+        Config mockConfig = mock(Config.class);
+
+        when(mockConfig.getData()).thenReturn("test");
+        when(mockConfig.getInFile()).thenReturn(null);
+
+        String result = SystemLambda.tapSystemOutNormalized(() -> Main.main(args));
+        String realResult = "test";
+
+        assertEquals(realResult,result.replace("\n", ""));
+    }
+
+    @Test
+    void givenEmptyDataAndInvalidFile_whenRun_thenPrintErrorMessage() throws Exception {
+        String[] args = {"-mode", "enc", "-data", "", "-in", "invalid.txt"};
+        Config mockConfig = mock(Config.class);
+
+        when(mockConfig.getData()).thenReturn("");
+        when(mockConfig.getInFile()).thenReturn("invalid.txt");
+
+//        when(FileManager.readFile("invalid.txt")).thenReturn(null);
+
+        String result = SystemLambda.tapSystemOutNormalized(() -> Main.main(args));
+
+        assertTrue(result.contains("Error: Unable to read input file"));
+        System.out.println(result);
     }
 
 }
